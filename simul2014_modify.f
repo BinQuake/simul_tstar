@@ -3143,9 +3143,14 @@ c
         stop
   20    continue
       read(1,*) iuserdt, rdisrdt,facrayr,mxiqrdt,wtrdtsht,res4
+c #modify
+c This is the iuseclu parameter, make it be either 1 or 2. 2 for cluster
+c      of events.
+
       read(1,*) iuseclu, nclu,edisedt,facraye,mxiqedt,nstaepair,wtepdt,
      2  wrmscemx,gminedt0
-      if((iuseclu.eq.1).and.(nclu.gt.maxclu)) then
+c #modify, from .eq. to .gt.
+      if((iuseclu.gt.1).and.(nclu.gt.maxclu)) then
         write(16,23) nclu, maxclu
    23   format(' nclu ',i4,' greater than array, maxclu ',i4,
      2     /,'***** STOP *****')
